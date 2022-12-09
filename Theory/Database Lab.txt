@@ -1,0 +1,84 @@
+SELECT * FROM EMPLOYEES
+SELECT * FROM DEPARTMENTS
+SELECT * FROM COUNTRIES
+SELECT * FROM JOB_HISTORY
+SELECT * FROM LOCATIONS
+SELECT * FROM REGIONS
+
+
+SELECT FIRST_NAME FROM EMPLOYEES
+
+SELECT FIRST_NAME, LAST_NAME FROM EMPLOYEES
+
+SELECT LAST_NAME, FIRST_NAME FROM EMPLOYEES
+
+SELECT MIN_SALARY, MAX_SALARY, SALARY FROM JOBS, EMPLOYEES
+
+----------------------------------------------------------------------
+
+SELECT * FROM EMPLOYEES
+
+>> find out all information of those employee whose salary is 24000
+
+SELECT * FROM EMPLOYEES WHERE SALARY = 24000
+SELECT * FROM EMPLOYEES WHERE SALARY = 9000
+
+>> find out all information of those employee whose id is 105
+
+select * from employees where employee_id = 105 
+
+SELECT * FROM EMPLOYEES WHERE EMPLOYEE_ID = 105
+
+---------------------------------------------------------------------------------
+>> find out all information of those employee whose first name is Steven
+
+SELECT * FROM EMPLOYEES WHERE FIRST_NAME = 'Steven'
+
+SELECT FIRST_NAME, SALARY FROM EMPLOYEES WHERE FIRST_NAME = 'Steven'
+
+-----------------------------------------------------------------------------------
+>> find out all information of those employee whose salary is more than 11000
+
+SELECT * FROM EMPLOYEES WHERE SALARY > 11000
+
+--------------------------------------------------------------------------------------
+1. Find out all information of those employee whose id is 101 or whose salary is 17000
+2. Find out all information of those employee whose city is tokyo
+3. Find out first name, last name and email address of all employee
+4. Find out job id and department id of all employees
+5. Find out employee information who joined after 17-june-87
+6. Find out employee'ss name first name, id and department number who works in department 10 or 20
+7. Find out employee's name and hire date who was hired between 21-sep-89 to 13-jan-93
+
+---------------------------------------------------------------------------------------------
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+-----1------
+
+SELECT * FROM EMPLOYEES WHERE EMPLOYEE_ID = 101 OR SALARY = 17000
+SELECT * FROM EMPLOYEES WHERE SALARY = 17000
+
+----2-----
+
+SELECT * FROM LOCATIONS WHERE CITY = 'Tokyo'
+
+------3-------
+
+SELECT FIRST_NAME, LAST_NAME, EMAIL FROM EMPLOYEES
+
+------4-------
+
+SELECT JOB_ID, DEPARTMENT_ID FROM EMPLOYEES
+
+------5-------
+
+SELECT * FROM EMPLOYEES WHERE HIRE_DATE > '17-JUN-87'
+
+-----6-------
+
+SELECT FIRST_NAME, EMPLOYEE_ID, DEPARTMENT_ID FROM EMPLOYEES WHERE DEPARTMENT_ID = 10 OR DEPARTMENT_ID = 20
+SELECT FIRST_NAME, EMPLOYEE_ID, DEPARTMENT_ID FROM EMPLOYEES WHERE DEPARTMENT_ID = 20
+
+-----7-------
+
+SELECT FIRST_NAME, HIRE_DATE FROM EMPLOYEES WHERE HIRE_DATE > '21-sep-89' AND HIRE_DATE < '13-JAN-93'

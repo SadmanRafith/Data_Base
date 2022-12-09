@@ -1,0 +1,27 @@
+1. LOWER FUNCTION 
+
+SELECT LOWER(FIRST_NAME) FROM EMPLOYEES WHERE LOWER(FIRST_NAME) = 'steven'
+
+here where checks condition
+but whenever we need to display something we must write after select
+
+
+SELECT ROUND((SYSDATE-HIRE_DATE)/7, 0) AS WEEKS FROM EMPLOYEES
+SELECT (SYSDATE-HIRE_DATE)/7 AS WEEKS FROM EMPLOYEES
+
+AS works as an aliasing function, its an optional
+keyword.
+sysdate indicates the total date
+
+
+fm keyword works for neglecting zero/null values
+which doesnt have any specific value
+
+
+
+
+
+
+
+
+

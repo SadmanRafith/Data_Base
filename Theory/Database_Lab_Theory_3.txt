@@ -1,0 +1,82 @@
+
+SELECT * FROM EMPLOYEES
+
+***for creating table***
+
+CREATE TABLE EMP
+(
+   EID VARCHAR2(20) CONSTRAINT EMP_EID_PK PRIMARY KEY,
+   ENAME VARCHAR2(50),
+   SAL NUMBER(5)
+);
+
+
+***for describing table***
+
+DESC EMP
+
+
+***for dropping table***
+
+DROP TABLE EMP
+
+***adding data in table***
+
+INSERT INTO EMP ()
+
+***Tasks***
+1.Display salary of all employees
+2.Display average salary of all employees
+3.Display maximum salary of all employees
+4.Display average commission of all employees
+5.Display department wise maximum salary.
+6.Display first_name, department id, and department wise maximum salary.
+7.Display department id and department wise maximum salary and exclude department 90 from the result.
+8.Display department id and department wise maximum salary whose maximum salary is more than 10000.
+9.Display department id and department wise maximum salary whose maximum salary is more than 10000 and exclude department 100
+10.Display department id and department wise maximum salary whose maximum salary is more than 10000 and exclude department 100 and sort
+the result in decending order of department id.
+
+***Answers***
+1. SELECT SALARY FROM EMPLOYEES
+2. SELECT AVG(SALARY) FROM EMPLOYEES
+3. SELECT AVG(SALARY), MAX(SALARY), MIN(SALARY), COUNT(SALARY) FROM EMPLOYEES
+4. SELECT AVG(COMMISSION_PCT) FROM EMPLOYEES
+
+
+		***using sum and manually***
+
+ SELECT SUM(COMMISSION_PCT)/107 FROM EMPLOYEES
+ SELECT SUM(COMMISSION_PCT)/35 FROM EMPLOYEES
+
+		***counts without null***
+
+ SELECT AVG(NVL(COMMISSION_PCT,0)) FROM EMPLOYEES
+
+
+5. SELECT DEPARTMENT_ID, MAX(SALARY) FROM EMPLOYEES GROUP BY DEPARTMENT_ID
+
+6.		***(error code)***
+
+ SELECT FIRST_NAME, DEPARTMENT_ID, MAX(SALARY) FROM EMPLOYEES GROUP BY DEPARTMENT_ID
+
+***cannot called anything else after select while using group by clause
+
+7. SELECT DEPARTMENT_ID, MAX(SALARY) FROM EMPLOYEES WHERE DEPARTMENT_ID<>90 GROUP BY DEPARTMENT_ID
+
+8. SELECT DEPARTMENT_ID, MAX(SALARY) FROM EMPLOYEES HAVING MAX(SALARY)>10000 GROUP BY DEPARTMENT_ID
+
+*** we must use having instead of where whenever we're dealing with group functions***
+
+9. 
+ SELECT DEPARTMENT_ID , MAX(SALARY) FROM EMPLOYEES
+ WHERE DEPARTMENT_ID<>100
+ HAVING MAX(SALARY)>10000
+ GROUP BY DEPARTMENT_ID
+
+10.
+ SELECT DEPARTMENT_ID , MAX(SALARY) FROM EMPLOYEES
+ WHERE DEPARTMENT_ID<>100
+ HAVING MAX(SALARY)>10000
+ GROUP BY DEPARTMENT_ID
+ ORDER BY DEPARTMENT_ID DESC

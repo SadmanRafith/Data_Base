@@ -1,0 +1,157 @@
+
+W3RESOURCE EXCERCISES ON EMPLOYEE DATABASE
+---------------------------------------------------------------------------------------------------------------
+1. From the following table return complete information about the employees.
+2. From the following table, write a SQL query to find the salaries of all employees. Return salary. 
+3. From the following table, write a SQL query to find the unique designations of the employees. Return job name.
+4. From the following table, write a SQL query to list the employees’ name, increased their salary by 15%, and expressed as number of Dollars.
+5. From the following table, write a SQL query to list the employee's name and job name as a format of "Employee & Job".
+6. Write a query in SQL to produce the output of employees as follows. JONAS (manager).
+7. From the following table, write a SQL query to find those employees with hire date in the format like February 22, 1991. Return employee ID, employee name, salary, hire date.
+8. From the following table, write a SQL query to count the number of characters except the spaces for each employee name. Return employee name length.
+9. From the following table, write a SQL query to find the employee ID, salary, and commission of all the employees. 
+10. From the following table, write a SQL query to find the unique department with jobs. Return department ID, Job name. 
+11. From the following table, write a SQL query to find those employees who do not belong to the department 100. Return complete information about the employees. 
+12. From the following table, write a SQL query to find those employees who joined before 1991. Return complete information about the employees. 
+13. From the following table, write a SQL query to calculate the average salary of employees who work as IT_PROG. Return average salary. 
+14. From the following table, write a SQL query to find the details of the employee ‘Steven’.
+15. From the following table, write a SQL query to identify employees whose commissions exceed their salaries. Return complete information about the employees.
+16. From the following table, write a SQL query to identify those employees whose salaries exceed 3000 after receiving a 25% salary increase. Return complete information about the employees.  
+17. From the following table, write a SQL query to find the names of the employees whose length is six. Return employee name.
+18. From the following table, write a SQL query to find out which employees joined in the month of January. Return complete information about the employees.
+19. From the following table, write a SQL query to separate the names of employees and their jobs by the string 'is a'.
+20. From the following table, write a SQL query to find those employees whose designation is ‘ST_CLERK’. Return complete information about the employees.
+21. From the following table, write a SQL query to identify employees with more than 27 years of experience. Return complete information about the employees. 
+22. From the following table, write a SQL query to find those employees whose salaries are less than 3500. Return complete information about the employees. 
+25. From the following table, write a SQL query to find those employees who joined before 1st April 1991. Return employee ID, employee name, hire date and salary. 
+26. From the following table, write a SQL query identify the employees who do not report to a manager. Return employee name, job name.
+28. From the following table, write a SQL query to identify the experience of the employees who work under the manager whose ID number is 68319. Return employee ID, employee name, salary, experience.
+30. From the following table, write a SQL query to identify those employees who retired after 31-Dec-99, completing eight years of service. Return employee name. 
+
+
+ANSWERS
+----------------------------------------------------------------------------------------------------------------
+1.
+SELECT *
+FROM EMPLOYEES
+
+2.
+SELECT SALARY
+FROM EMPLOYEES
+
+3.
+SELECT DISTINCT(JOB_ID)
+FROM EMPLOYEES
+
+4.
+SELECT FIRST_NAME, (SALARY+(SALARY*0.15)) AS DOLLARS 
+FROM EMPLOYEES
+
+5.
+SELECT FIRST_NAME||' '||JOB_ID AS "EMPLOYEE & JOB"
+FROM EMPLOYEES
+
+6.
+SELECT FIRST_NAME||'('||JOB_ID||')' AS EMPLOYEE
+FROM EMPLOYEES
+
+***note: concatenate operator must only be placed before/after column names***
+
+7.
+SELECT EMPLOYEE_ID, FIRST_NAME, SALARY, TO_CHAR (HIRE_DATE, 'MM. DD. YYYY')
+FROM EMPLOYEES
+
+***note: to char format --> TO_CHAR (<col>, 'format') ***
+
+8.
+SELECT LENGTH(TRIM(FIRST_NAME))
+FROM EMPLOYEES
+
+9.
+SELECT EMPLOYEE_ID, SALARY, COMMISSION_PCT
+FROM EMPLOYEES
+
+10.
+SELECT DISTINCT DEPARTMENT_ID, JOB_ID
+FROM EMPLOYEES
+
+11.
+SELECT *
+FROM EMPLOYEES
+WHERE DEPARTMENT_ID <> 100
+
+12.
+SELECT *
+FROM EMPLOYEES
+WHERE HIRE_DATE < '1-JAN-1991'
+
+13.
+SELECT AVG(SALARY)
+FROM EMPLOYEES
+WHERE JOB_ID = 'IT_PROG'
+
+14.
+SELECT *
+FROM EMPLOYEES 
+WHERE FIRST_NAME = 'Steven'
+
+15.
+SELECT *
+FROM EMPLOYEES
+WHERE COMMISSION_PCT > SALARY
+
+16.
+SELECT FIRST_NAME, SALARY
+FROM EMPLOYEES
+WHERE SALARY+(SALARY*0.25) > 3000
+
+***note: logic***
+
+17.
+SELECT FIRST_NAME
+FROM EMPLOYEES
+WHERE LENGTH(FIRST_NAME) = 6
+
+18.
+SELECT FIRST_NAME, HIRE_DATE
+FROM EMPLOYEES
+WHERE HIRE_DATE BETWEEN '1-JAN-1999' AND '31-JAN-1999'
+
+19.
+SELECT FIRST_NAME||' is a '||JOB_ID
+FROM EMPLOYEES
+
+20.
+SELECT FIRST_NAME, JOB_ID
+FROM EMPLOYEES
+WHERE JOB_ID = 'ST_CLERK'
+
+22.
+SELECT *
+FROM EMPLOYEES
+WHERE SALARY < 3500
+
+25.
+SELECT EMPLOYEE_ID, FIRST_NAME, HIRE_DATE, SALARY
+FROM EMPLOYEES
+WHERE HIRE_DATE < '1-APR-1991'
+
+26.
+SELECT FIRST_NAME, JOB_ID
+FROM EMPLOYEES
+WHERE MANAGER_ID IS NULL
+
+29.
+SELECT emp_id,
+       emp_name,
+       salary,
+       age(CURRENT_DATE, hire_date) "Experience"
+FROM employees
+WHERE manager_id=68319;
+
+30.
+SELECT FIRST_NAME, HIRE_DATE
+FROM EMPLOYEES
+WHERE HIRE_DATE > '31-DEC-1999'
+
+

@@ -1,0 +1,34 @@
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+Questions
+-------------------------------------------------------------------------------------------------------------------------
+
+1. Display first name and department ID of all employees.
+2. Display first name and salary of all employees.
+3. Display first name, salary, commission and total salary of all employees (Total salary added with commission).
+4. Display full name of all employees.
+5. Find out how many distinct/unique department IDs are there in the employees table.
+
+SELECT * FROM EMPLOYEES
+
+Answers
+-------------------------------------------------------------------------------------------------------------------------
+
+1. SELECT FIRST_NAME, DEPARTMENT_ID FROM EMPLOYEES
+
+
+2. SELECT FIRST_NAME, SALARY FROM EMPLOYEES
+
+
+3. SELECT FIRST_NAME, SALARY, COMMISSION_PCT, SALARY+(SALARY*NVL(COMMISSION_PCT,0)) AS TOTAL_SALARY FROM EMPLOYEES
+
+OR(added directly):
+
+   SELECT FIRST_NAME, SALARY, COMMISSION_PCT, SALARY+NVL(COMMISSION_PCT,0) AS TOTAL_SALARY FROM EMPLOYEES
+
+
+4. SELECT FIRST_NAME, LAST_NAME, FIRST_NAME||' '||LAST_NAME AS FULL_NAME FROM EMPLOYEES
+
+
+5. SELECT DISTINCT(DEPARTMENT_ID) FROM EMPLOYEES
