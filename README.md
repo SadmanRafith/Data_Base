@@ -1,4 +1,5 @@
 # Database
 This repository contains all of my MySQL codes
 
-![1_mLqtKV1FjUg-WKlLW-cXjQ](https://user-images.githubusercontent.com/99963332/193454155-a115cde6-2df9-45c1-b364-ce5b1b73039f.jpg)
+
+![istockphoto-1172788298-612x612](https://user-images.githubusercontent.com/108008599/219289715-f9f64e14-a07f-4cf9-8808-4fe07121d90f.jpg)
